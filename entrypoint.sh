@@ -62,6 +62,9 @@ while getopts "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:t:" o; do
        t)
          export trivyIgnores=${OPTARG}
        ;;
+       u)
+         export debug=${OPTARG}
+       ;;
   esac
 done
 
@@ -151,6 +154,9 @@ if [ "$skipFiles" ];then
   do
     ARGS="$ARGS --skip-files $i"
   done
+fi
+if [ "$debug" == "true" ];then
+  ARGS="$ARGS --debug"
 fi
 
 echo "Running trivy with options: ${ARGS}" "${artifactRef}"
