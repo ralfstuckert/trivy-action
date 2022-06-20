@@ -81,6 +81,10 @@ inputs:
     description: 'comma-separated list of relative paths in repository to one or more .trivyignore files'
     required: false
     default: ''
+  debug:
+    description: 'enables debug output'
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
   image: "Dockerfile"
@@ -105,3 +109,4 @@ runs:
     - '-r ${{ inputs.list-all-pkgs }}'
     - '-s ${{ inputs.security-checks }}'
     - '-t ${{ inputs.trivyignores }}'
+    - '-u ${{ inputs.debug }}'
